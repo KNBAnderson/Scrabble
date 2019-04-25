@@ -38,7 +38,24 @@ namespace Scrabble.Models
     public int LetterScore(char letter) {
       letter = Char.ToUpper(letter);
       return letterValue[letter];
-      // return 0;
+      // return 0; For test fail
+    }
+
+    public char[] WordToCharacters(string word)
+    {
+      char[] wordArray = word.ToCharArray();
+      return wordArray;
+    }
+
+    public int WordScore(string word)
+    {
+      int wordScore = 0;
+      char[] wordArray = WordToCharacters(word);
+      foreach (char letter in wordArray)
+      {
+        wordScore += LetterScore(letter);
+      }
+      return wordScore;
     }
   }
 }
